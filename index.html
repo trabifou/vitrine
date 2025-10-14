@@ -39,21 +39,76 @@
         <section id="projects">
             <div class="container">
                 <h2>Projets</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>Projet 1</h3>
-                        <p>Description du premier projet</p>
-                        <a href="#" class="project-link">Voir le projet</a>
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="carousel-slide active">
+                            <div class="slide-content">
+                                <h3>Architecture & Design</h3>
+                                <p>Conception de l'architecture globale du projet avec une approche modulaire et évolutive. Utilisation de patterns de design pour assurer la maintenabilité et la scalabilité du code.</p>
+                                <div class="skills-tags">
+                                    <span class="skill-tag">Architecture</span>
+                                    <span class="skill-tag">Design Patterns</span>
+                                    <span class="skill-tag">UML</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-content">
+                                <h3>Développement Frontend</h3>
+                                <p>Création d'une interface utilisateur moderne et réactive avec des technologies web modernes. Focus sur l'expérience utilisateur et l'accessibilité.</p>
+                                <div class="skills-tags">
+                                    <span class="skill-tag">HTML5</span>
+                                    <span class="skill-tag">CSS3</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">Responsive Design</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-content">
+                                <h3>Backend & API</h3>
+                                <p>Développement d'une API REST robuste et sécurisée. Gestion de la base de données, authentification et autorisation des utilisateurs.</p>
+                                <div class="skills-tags">
+                                    <span class="skill-tag">Node.js</span>
+                                    <span class="skill-tag">RESTful API</span>
+                                    <span class="skill-tag">Database</span>
+                                    <span class="skill-tag">Security</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-content">
+                                <h3>DevOps & Déploiement</h3>
+                                <p>Mise en place d'un pipeline CI/CD pour automatiser les tests et le déploiement. Configuration de l'infrastructure et monitoring en production.</p>
+                                <div class="skills-tags">
+                                    <span class="skill-tag">CI/CD</span>
+                                    <span class="skill-tag">GitHub Actions</span>
+                                    <span class="skill-tag">Docker</span>
+                                    <span class="skill-tag">Monitoring</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-content">
+                                <h3>Tests & Qualité</h3>
+                                <p>Développement de tests unitaires et d'intégration pour garantir la qualité du code. Mise en place de bonnes pratiques de développement et de code review.</p>
+                                <div class="skills-tags">
+                                    <span class="skill-tag">Testing</span>
+                                    <span class="skill-tag">Code Quality</span>
+                                    <span class="skill-tag">Best Practices</span>
+                                    <span class="skill-tag">Code Review</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="project-card">
-                        <h3>Projet 2</h3>
-                        <p>Description du deuxième projet</p>
-                        <a href="#" class="project-link">Voir le projet</a>
-                    </div>
-                    <div class="project-card">
-                        <h3>Projet 3</h3>
-                        <p>Description du troisième projet</p>
-                        <a href="#" class="project-link">Voir le projet</a>
+                    <button class="carousel-btn prev" aria-label="Slide précédent">‹</button>
+                    <button class="carousel-btn next" aria-label="Slide suivant">›</button>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                        <span class="indicator" data-slide="4"></span>
                     </div>
                 </div>
             </div>
