@@ -7,6 +7,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --card-overlap: -60px;
+    --card-push-distance: 40px;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -195,7 +200,7 @@ body {
     transform: translateY(0);
     width: 350px;
     flex-shrink: 0;
-    margin-left: -60px;
+    margin-left: var(--card-overlap);
     z-index: 1;
 }
 
@@ -212,12 +217,9 @@ body {
 }
 
 /* Push other cards away when hovering */
-.project-cards:hover .project-card:not(:hover) {
-    transform: translateX(0);
-}
-
 .project-card:hover ~ .project-card {
-    transform: translateX(40px);
+    transform: translateX(var(--card-push-distance));
+}
 }
 
 .project-card-image {
