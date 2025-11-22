@@ -353,3 +353,29 @@ body {
         border-color: #3498db;
     }
 }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    #presentation {
+        animation: none;
+    }
+    
+    #presentation h1 {
+        animation: none;
+        opacity: 1;
+        letter-spacing: normal;
+    }
+    
+    #presentation .subtitle {
+        animation: none;
+        opacity: 1;
+    }
+    
+    .project-card {
+        transition: none;
+    }
+    
+    .project-card-image {
+        transition: none;
+    }
+}
