@@ -1,0 +1,84 @@
+.presentation-section {
+  background-color: #1a2332;
+  background-image: 
+    linear-gradient(135deg, rgba(26, 35, 50, 0.30) 0%, rgba(15, 23, 42, 0.85) 100%),
+    url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2400&q=80");
+  background-size: 150% auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.presentation-section h1,
+.presentation-section .subtitle {
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.presentation-columns {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  align-items: flex-start;
+}
+
+.presentation-content {
+  flex: 0 0 65%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+}
+
+.presentation-text {
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 0;
+  text-align: left;
+}
+
+.presentation-offers {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.offer-card {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1.5rem;
+}
+
+.offer-card h3 {
+  color: white;
+  font-size: 1.3rem;
+  margin: 0 0 0.8rem 0;
+  font-weight: 600;
+}
+
+.offer-card p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 968px) {
+  .presentation-section {
+    background-size: cover;
+  }
+  
+  .presentation-columns {
+    flex-direction: column;
+  }
+  
+  .presentation-content {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .presentation-section {
+    background-attachment: scroll;
+  }
+}

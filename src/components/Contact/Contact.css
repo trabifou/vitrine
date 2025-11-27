@@ -1,0 +1,8 @@
+.contact-section {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.contact-section h1,
+.contact-section .subtitle {
+  color: white;
+}
