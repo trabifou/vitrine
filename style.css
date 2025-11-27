@@ -7,6 +7,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --card-overlap: -60px;
+    --card-push-distance: 40px;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -174,11 +179,14 @@ body {
    PROJECT CARDS
    ========================================== */
 .project-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 3rem;
     padding: 0 1rem;
+    gap: 0;
+    position: relative;
+    min-height: 500px;
 }
 
 .project-card {
@@ -190,13 +198,28 @@ body {
         0 1px 8px rgba(0, 0, 0, 0.06);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform: translateY(0);
+    width: 350px;
+    flex-shrink: 0;
+    margin-left: var(--card-overlap);
+    z-index: 1;
+}
+
+.project-card:first-child {
+    margin-left: 0;
 }
 
 .project-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-10px) scale(1.08);
     box-shadow: 
         0 20px 50px rgba(0, 0, 0, 0.15),
         0 5px 20px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* Push other cards away when hovering */
+.project-card:hover ~ .project-card {
+    transform: translateX(var(--card-push-distance));
+}
 }
 
 .project-card-image {
@@ -259,8 +282,19 @@ body {
     }
 
     .project-cards {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         gap: 2rem;
+        min-height: auto;
+    }
+    
+    .project-card {
+        margin-left: 0;
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .project-card:hover ~ .project-card {
+        transform: translateX(0);
     }
 }
 
