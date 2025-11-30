@@ -1,11 +1,11 @@
-.section {
+/* .section {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 6rem 2rem 4rem;
   position: relative;
-}
+} */
 
 .section-content {
   max-width: 1200px;
@@ -44,7 +44,7 @@
 }
 
 /* Clean, professional separators */
-.section:not(:last-child)::after {
+/* .section:not(:last-child)::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -54,7 +54,7 @@
   height: 4px;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 2px;
-}
+} */
 
 @keyframes fadeInUp {
   from {

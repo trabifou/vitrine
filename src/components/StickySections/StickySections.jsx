@@ -1,0 +1,104 @@
+import { useEffect } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Presentation from '../Presentation/Presentation'
+import Projets from '../Projets/Projets'
+import Contact from '../Contact/Contact'
+import './StickySections.css'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const StickySections = ({ onSectionChange }) => {
+  useEffect(() => {
+    // Configuration de lagSmoothing pour des animations fluides
+    gsap.ticker.lagSmoothing(1000, 16)
+
+    // Attendre que le DOM soit complètement chargé
+    const timer = setTimeout(() => {
+      const sections = gsap.utils.toArray('.section')
+
+      console.log('Sections trouvées:', sections.length) // Debug
+
+      // Animation GSAP ScrollTrigger pour chaque section
+      sections.forEach((section, i) => {
+        console.log(`Section ${i}:`, section.id) // Debug
+        
+        if (i < sections.length - 1) {
+          const sectionContent = section.querySelector('.section-content')
+
+          if (sectionContent) {
+            console.log(`Animation créée pour section ${i}`) // Debug
+            
+            gsap.fromTo(sectionContent, {
+              y: '0%',
+              z: 0,
+              rotationX: 0,
+            }, {
+              y: '-50%',
+              z: -250,
+              rotationX: 45,
+              scrollTrigger: {
+                trigger: sections[i + 1],
+                start: 'top bottom',
+                end: 'top top',
+                scrub: true,
+                pin: section,
+                pinSpacing: false,
+                id: `section-${i}`,
+              }
+            })
+
+            gsap.to(sectionContent, {
+              '--after-opacity': 1,
+              scrollTrigger: {
+                trigger: sections[i + 1],
+                start: 'top bottom',
+                end: 'top center',
+                scrub: true,
+              }
+            })
+          } else {
+            console.log(`Section content non trouvé pour section ${i}`) // Debug
+          }
+        }
+      })
+
+      // Rafraîchir ScrollTrigger après l'initialisation
+      ScrollTrigger.refresh()
+
+      // Gestion de l'active section
+      const handleScroll = () => {
+        let current = ''
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop
+          if (window.pageYOffset >= sectionTop - 100) {
+            current = section.getAttribute('id')
+          }
+        })
+
+        if (current && onSectionChange) {
+          onSectionChange(current)
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll)
+      handleScroll()
+    }, 100)
+
+    return () => {
+      clearTimeout(timer)
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [onSectionChange])
+
+  return (
+    <div className="sticky-sections">
+      <Presentation />
+      <Projets />
+      <Contact />
+    </div>
+  )
+}
+
+export default StickySections

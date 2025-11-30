@@ -1,19 +1,43 @@
 .presentation-section {
-  background-color: #1a2332;
-  background-image: 
-    linear-gradient(135deg, rgba(26, 35, 50, 0.30) 0%, rgba(15, 23, 42, 0.85) 100%),
-    url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2400&q=80");
-  background-size: 150% auto;
-  background-position: center center;
-  background-repeat: no-repeat;
   position: relative;
   overflow: hidden;
 }
 
+.presentation-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(135deg, rgba(26, 35, 50, 0.30) 0%, rgba(15, 23, 42, 0.85) 100%),
+    url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2400&q=80");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.presentation-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
 .presentation-section h1,
 .presentation-section .subtitle {
+  position: relative;
+  z-index: 1;
   color: white;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.presentation-columns {
+  position: relative;
+  z-index: 1;
 }
 
 .presentation-columns {

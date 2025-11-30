@@ -1,0 +1,28 @@
+.sticky-sections {
+    position: relative;
+    width: 100%;
+    background-color: #0f0f0f;
+    padding-top: var(--navbar-height);
+}
+
+.section {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.section-content {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transform-origin: 50% 100%;
+    will-change: transform;
+    text-align: center;
+    justify-content: center;
+}

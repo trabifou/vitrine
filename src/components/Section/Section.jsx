@@ -1,5 +1,6 @@
 import './Section.css'
 
+//SctickySection
 const Section = ({ id, className = '', children, customRef }) => {
   return (
     <section id={id} className={`section ${className}`} ref={customRef}>
