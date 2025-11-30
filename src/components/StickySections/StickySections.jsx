@@ -39,8 +39,8 @@ const StickySections = ({ onSectionChange }) => {
               rotationX: 45,
               scrollTrigger: {
                 trigger: sections[i + 1],
-                start: 'top bottom',
-                end: 'top top',
+                start: 'top 85%',
+                end: 'top -75%',
                 scrub: true,
                 pin: section,
                 pinSpacing: false,
@@ -52,8 +52,8 @@ const StickySections = ({ onSectionChange }) => {
               '--after-opacity': 1,
               scrollTrigger: {
                 trigger: sections[i + 1],
-                start: 'top bottom',
-                end: 'top center',
+                start: 'top 75%',
+                end: 'top -25%',
                 scrub: true,
               }
             })
