@@ -29,19 +29,22 @@ const Projets = () => {
 
   return (
     <Section id="projets" className="projets-section">
-      <h1>Découvrez nos créations</h1>
-      <p className="subtitle">Réalisations et projets en cours</p>
-      
-      <div className="project-cards">
-        {projects.map(project => (
-          <ProjectCard
-            key={project.id}
-            title={project.title}
-            description={project.description}
-            imageColor={project.imageColor}
-            imageText={project.imageText}
-          />
-        ))}
+      <div className="projets-background"></div>
+      <div className="projets-container">
+        <h1>Découvrez nos créations</h1>
+        <p className="subtitle">Réalisations et projets en cours</p>
+
+        <div className="project-cards">
+          {projects.map(project => (
+            <ProjectCard
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              imageColor={project.imageColor}
+              imageText={project.imageText}
+            />
+          ))}
+        </div>
       </div>
     </Section>
   )

@@ -19,6 +19,9 @@ const StickySections = ({ onSectionChange }) => {
 
       console.log('Sections trouvées:', sections.length) // Debug
 
+      // Détection mobile
+      const isMobile = window.innerWidth <= 768
+
       // Animation GSAP ScrollTrigger pour chaque section
       sections.forEach((section, i) => {
         console.log(`Section ${i}:`, section.id) // Debug
@@ -28,6 +31,10 @@ const StickySections = ({ onSectionChange }) => {
 
           if (sectionContent) {
             console.log(`Animation créée pour section ${i}`) // Debug
+            
+            // Sur mobile, utiliser 'bottom 15%' pour déclencher quand le bas de la section arrive à 15% du bas de l'écran
+            const startTrigger = isMobile ? 'top 15%' : 'top 55%'
+            const endTrigger = isMobile ? 'bottom -85%' : 'top -15%'
             
             gsap.fromTo(sectionContent, {
               y: '0%',
@@ -39,8 +46,8 @@ const StickySections = ({ onSectionChange }) => {
               rotationX: 45,
               scrollTrigger: {
                 trigger: sections[i + 1],
-                start: 'top 85%',
-                end: 'top -75%',
+                start: startTrigger,
+                end: endTrigger,
                 scrub: true,
                 pin: section,
                 pinSpacing: false,
@@ -48,12 +55,15 @@ const StickySections = ({ onSectionChange }) => {
               }
             })
 
+            const opacityStartTrigger = isMobile ? 'top 85%' : 'top 75%'
+            const opacityEndTrigger = isMobile ? 'top -35%' : 'top -25%'
+
             gsap.to(sectionContent, {
               '--after-opacity': 1,
               scrollTrigger: {
                 trigger: sections[i + 1],
-                start: 'top 75%',
-                end: 'top -25%',
+                start: opacityStartTrigger,
+                end: opacityEndTrigger,
                 scrub: true,
               }
             })
