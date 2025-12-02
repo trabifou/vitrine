@@ -26,3 +26,6 @@ node_modules/
 # Build outputs (if added later)
 dist/
 build/
+
+
+public/

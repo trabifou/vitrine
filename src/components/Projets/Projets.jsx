@@ -12,10 +12,9 @@ const Projets = ({ enableScrollAnimation = false }) => {
   const projects = [
     {
       id: 1,
-      title: 'Analytique Avancée',
+      title: 'Tresors Nomade',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      imageColor: '#4facfe',
-      imageText: 'Analytique'
+      img: `${import.meta.env.BASE_URL}tresors-nomade2.png`
     },
     {
       id: 2,
@@ -169,6 +168,7 @@ const Projets = ({ enableScrollAnimation = false }) => {
               description={project.description}
               imageColor={project.imageColor}
               imageText={project.imageText}
+              img={project.img}
               zIndex={project.id + 1}
             />
           ))}
