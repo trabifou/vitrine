@@ -63,10 +63,15 @@ const Projets = ({ enableScrollAnimation = false }) => {
           start: 'top 15%',
           end: `+=${cards.length * 50}%`,
           scrub: 1,
+          snap: {
+            snapTo: 1 / (cards.length + 1), // Snap entre chaque card
+            duration: 0.5,
+            ease: 'power2.inOut',
+          },
           id: 'projets-timeline',
         },
       })
-      
+
       // Animation du titre
       tl.fromTo(title, {
         opacity: 0,
@@ -74,28 +79,31 @@ const Projets = ({ enableScrollAnimation = false }) => {
       }, {
         opacity: 1,
         y: 0,
-        duration: 0.1,
-      })
+      }, 0) // Position 0 : début
+
+      let currentTime = 1 // Début après le titre
 
       // Ajouter chaque card à la timeline
       cards.forEach((card, index) => {
         // position initiale
         gsap.set(card, {
           position: 'absolute',
-          top: `${index*2}%`,
+          top: `${index * 2}%`,
           transform: 'translate(-50%, -50%)',
           zIndex: index,
         })
-        // Apparition depuis la gauche
+
+        // Apparition depuis la gauche à une position absolue dans la timeline
         tl.fromTo(card, {
           x: '-100%',
           opacity: 0,
         }, {
-          x: `-${index*2}%`,
+          x: `-${index * 2}%`,
           opacity: 1,
-          duration: 0.3,
-        })
+          duration: 1, // Durée fixe pour chaque animation
+        }, currentTime) // Position absolue dans la timeline
 
+        currentTime += 1 // Passer à la prochaine position après la fin de cette animation
       })
     } else {
       // Sur desktop : animation normale
