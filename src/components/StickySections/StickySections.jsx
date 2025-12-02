@@ -26,6 +26,13 @@ const StickySections = ({ onSectionChange }) => {
       sections.forEach((section, i) => {
         console.log(`Section ${i}:`, section.id) // Debug
         
+        // Skip si la section a sa propre animation
+        const hasScrollAnimation = section.getAttribute('data-scroll-animation') === 'true'
+        if (hasScrollAnimation) {
+          console.log(`Section ${section.id} gère sa propre animation`) // Debug
+          return
+        }
+        
         if (i < sections.length - 1) {
           const sectionContent = section.querySelector('.section-content')
 
@@ -48,7 +55,7 @@ const StickySections = ({ onSectionChange }) => {
                 trigger: sections[i + 1],
                 start: startTrigger,
                 end: endTrigger,
-                scrub: true,
+                scrub: 0.5,
                 pin: section,
                 pinSpacing: false,
                 id: `section-${i}`,
@@ -105,7 +112,7 @@ const StickySections = ({ onSectionChange }) => {
   return (
     <div className="sticky-sections">
       <Presentation />
-      <Projets />
+      <Projets enableScrollAnimation={true} />
       <Contact />
     </div>
   )
