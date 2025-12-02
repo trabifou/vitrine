@@ -6,5 +6,11 @@
 
 body {
     /* font-family: "myfont", option; */
-    --navbar-height: 50px;
+    --navbar-height: 100px;
+}
+
+@media (max-width: 768px) {
+    body {
+        --navbar-height: 60px;
+    }
 }

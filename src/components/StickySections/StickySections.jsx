@@ -40,22 +40,22 @@ const StickySections = ({ onSectionChange }) => {
             console.log(`Animation créée pour section ${i}`) // Debug
             
             // Sur mobile, utiliser 'bottom 15%' pour déclencher quand le bas de la section arrive à 15% du bas de l'écran
-            const startTrigger = isMobile ? 'top 15%' : 'top 55%'
-            const endTrigger = isMobile ? 'bottom -85%' : 'top -15%'
+            const startTrigger = isMobile ? 'top 45%' : 'top 55%'
+            const endTrigger = isMobile ? 'top -60%' : 'top -15%'
             
             gsap.fromTo(sectionContent, {
               y: '0%',
               z: 0,
               rotationX: 0,
             }, {
-              y: '-50%',
+              y: '-30%',
               z: -250,
               rotationX: 45,
               scrollTrigger: {
                 trigger: sections[i + 1],
                 start: startTrigger,
                 end: endTrigger,
-                scrub: 0.5,
+                scrub: 1,
                 pin: section,
                 pinSpacing: false,
                 id: `section-${i}`,

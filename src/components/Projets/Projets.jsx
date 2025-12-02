@@ -7,6 +7,7 @@ import './Projets.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const navbarHeight = 100
 const Projets = ({ enableScrollAnimation = false }) => {
   const projects = [
     {
@@ -38,34 +39,36 @@ const Projets = ({ enableScrollAnimation = false }) => {
     const section = document.getElementById('projets')
     if (!section) return
 
-    // Pin la section pendant l'animation
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top top',
-      end: '+=130%',
-      pin: true,
-      pinSpacing: true,
-      id: 'projets-pin',
-    })
+    const isMobile = window.innerWidth <= 768
 
     // Timeline d'animation progressive
     const title = section.querySelector('h1')
-    const subtitle = section.querySelector('.subtitle')
     const cardsContainer = section.querySelector('.project-cards')
-    
-    if (title && subtitle && cardsContainer) {
+    const cards = section.querySelectorAll('.project-card')
+
+    if (isMobile) {
+      // Sur mobile : pin en bas, cards qui se remplacent une par une
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top top',
+        end: `+=${cards.length * 60}%`,
+        pin: true,
+        pinSpacing: true,
+        id: 'projets-pin',
+      })
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: 'top 15%',
-          end: '+=70%',
+          end: `+=${cards.length * 50}%`,
           scrub: 1,
           id: 'projets-timeline',
         },
       })
       
-      // Animer le titre et sous-titre d'abord
-      tl.fromTo([title, subtitle], {
+      // Animation du titre
+      tl.fromTo(title, {
         opacity: 0,
         y: -30,
       }, {
@@ -73,16 +76,66 @@ const Projets = ({ enableScrollAnimation = false }) => {
         y: 0,
         duration: 0.1,
       })
-      
-      // Puis animer les cards depuis la gauche
-      .fromTo(cardsContainer, {
-        x: '-100%',
-        opacity: 0,
-      }, {
-        x: '0%',
-        opacity: 1,
-        duration: 0.7,
+
+      // Ajouter chaque card à la timeline
+      cards.forEach((card, index) => {
+        // position initiale
+        gsap.set(card, {
+          position: 'absolute',
+          top: `${index*2}%`,
+          transform: 'translate(-50%, -50%)',
+          zIndex: index,
+        })
+        // Apparition depuis la gauche
+        tl.fromTo(card, {
+          x: '-100%',
+          opacity: 0,
+        }, {
+          x: `-${index*2}%`,
+          opacity: 1,
+          duration: 0.3,
+        })
+
       })
+    } else {
+      // Sur desktop : animation normale
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top top',
+        end: '+=130%',
+        pin: true,
+        pinSpacing: true,
+        id: 'projets-pin',
+      })
+
+      if (title && cardsContainer) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 15%',
+            end: '+=70%',
+            scrub: 1,
+            id: 'projets-timeline',
+          },
+        })
+
+        tl.fromTo(title, {
+          opacity: 0,
+          y: -30,
+        }, {
+          opacity: 1,
+          y: 0,
+          duration: 0.1,
+        })
+          .fromTo(cardsContainer, {
+            x: '-100%',
+            opacity: 0,
+          }, {
+            x: '0%',
+            opacity: 1,
+            duration: 0.7,
+          })
+      }
     }
 
     return () => {
@@ -98,8 +151,7 @@ const Projets = ({ enableScrollAnimation = false }) => {
     <Section id="projets" className="projets-section" enableScrollAnimation={enableScrollAnimation}>
       <div className="projets-background"></div>
       <div className="projets-container">
-        <h1>Découvrez nos créations</h1>
-        <p className="subtitle">Réalisations et projets en cours</p>
+        <h1>Creations</h1>
 
         <div className="project-cards">
           {projects.map(project => (
@@ -109,6 +161,7 @@ const Projets = ({ enableScrollAnimation = false }) => {
               description={project.description}
               imageColor={project.imageColor}
               imageText={project.imageText}
+              zIndex={project.id + 1}
             />
           ))}
         </div>
