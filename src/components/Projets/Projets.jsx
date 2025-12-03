@@ -13,22 +13,20 @@ const Projets = ({ enableScrollAnimation = false }) => {
     {
       id: 1,
       title: 'Tresors Nomade',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      description: 'Un coin pour presenter ses tresors et leur histoire',
       img: `${import.meta.env.BASE_URL}tresors-nomade2.png`
     },
     {
       id: 2,
-      title: 'Solutions Digitales',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      title: 'FluteCraft',
+      description: 'Une page web pour fabriquer vous meme la flute de vos reve',
       imageColor: '#667eea',
-      imageText: 'Digital'
     },
     {
       id: 3,
-      title: 'Innovation Stratégique',
-      description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      title: "App Map",
+      description: "Un regroupement d'informations graphiques pour la france metropolitaine",
       imageColor: '#764ba2',
-      imageText: 'Innovation'
     }
   ]
 
@@ -41,7 +39,7 @@ const Projets = ({ enableScrollAnimation = false }) => {
     const isMobile = window.innerWidth <= 768
 
     // Timeline d'animation progressive
-    const title = section.querySelector('h1')
+    const title = section.querySelector('h2')
     const cardsContainer = section.querySelector('.project-cards')
     const cards = section.querySelectorAll('.project-card')
 
@@ -158,7 +156,7 @@ const Projets = ({ enableScrollAnimation = false }) => {
     <Section id="projets" className="projets-section" enableScrollAnimation={enableScrollAnimation}>
       <div className="projets-background"></div>
       <div className="projets-container">
-        <h1>Creations</h1>
+        <h2>Creations</h2>
 
         <div className="project-cards">
           {projects.map(project => (
