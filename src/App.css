@@ -11,6 +11,6 @@ body {
 
 @media (max-width: 768px) {
     body {
-        --navbar-height: 60px;
+        --navbar-height: 80px;
     }
 }
