@@ -90,7 +90,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(78, 65, 50, 0) 15%, rgba(78, 65, 50, 0.5) 100%);
+  background: linear-gradient(to bottom, rgba(78, 65, 50, 0) 15%, rgba(78, 65, 50, 0.7) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -102,7 +102,7 @@
   object-position: top left;
   position: relative;
   z-index: 0;
-  filter: blur(3px);
+  filter: blur(2px);
 }
 
 .project-card-content {
@@ -114,19 +114,36 @@
   bottom: 0;
   left: 0;
   right: 0;
+  background-color: rgba(49, 49, 49, 0.8);
 }
 
 .project-card-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 0.8rem;
 }
 
 .project-card-description {
   font-size: 1rem;
-  color: #7f8c8d;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
+}
+
+.project-link {
+  display: flex;
+  align-self: right;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  padding: 1rem;
+}
+
+.project-link:hover {
+  transform: scale(1.1);
+}
+
+.project-link svg {
+  display: block;
 }
 
 @media (max-width: 768px) {

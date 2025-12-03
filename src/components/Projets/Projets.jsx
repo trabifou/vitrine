@@ -13,20 +13,23 @@ const Projets = ({ enableScrollAnimation = false }) => {
     {
       id: 1,
       title: 'Tresors Nomade',
-      description: 'Un coin pour presenter ses tresors et leur histoire',
-      img: `${import.meta.env.BASE_URL}tresors-nomade2.png`
+      description: 'Un coin pour présenter ses tresors et leur histoire',
+      img: `${import.meta.env.BASE_URL}tresors-nomade2.png`,
+      lien: "https://tresors-nomade.web.app"
     },
     {
       id: 2,
       title: 'FluteCraft',
-      description: 'Une page web pour fabriquer vous meme la flute de vos reve',
+      description: 'Une page web pour fabriquer vous meme la flute de vos rêves',
       imageColor: '#667eea',
+      lien:"#"
     },
     {
       id: 3,
       title: "App Map",
-      description: "Un regroupement d'informations graphiques pour la france metropolitaine",
+      description: "Un regroupement d'informations graphiques pour la france métropolitaine",
       imageColor: '#764ba2',
+      lien:"#"
     }
   ]
 
@@ -167,6 +170,7 @@ const Projets = ({ enableScrollAnimation = false }) => {
               imageColor={project.imageColor}
               imageText={project.imageText}
               img={project.img}
+              lien={project.lien}
               zIndex={project.id + 1}
             />
           ))}
